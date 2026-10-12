@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <link rel="icon" href="images/favicon-bottle.png" type="image/x-icon" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>لوحة التحكم — السلطان</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="Style.css" />
+    <link rel="stylesheet" href="Admin.css" />
+    <style>
+      .login-container {
+        max-width: 400px;
+        margin: 60px auto;
+        padding: 40px;
+        border: 1px solid var(--color-whisper);
+        border-radius: var(--radius-card);
+        text-align: center;
+      }
+      .login-container h1 {
+        font-size: 24px;
+        margin-bottom: 24px;
+      }
+      .login-container .f {
+        margin-bottom: 16px;
+        text-align: right;
+      }
+      .login-container input {
+        width: 100%;
+      }
+      .login-container button {
+        width: 100%;
+        margin-top: 12px;
+      }
+      .admin-hidden { display: none; }
+    </style>
+  </head>
+  <body>
+
+    <!-- تسجيل الدخول -->
+    <div id="loginScreen" class="login-container">
+      <h1>لوحة التحكم</h1>
+      <form id="loginForm">
+        <label class="f">
+          <span>كلمة المرور</span>
+          <input type="password" id="passwordInput" placeholder="أدخل كلمة المرور" required />
+        </label>
+        <button type="submit" class="btn btn--primary">دخول</button>
+      </form>
+    </div>
+
+    <!-- لوحة الإدارة -->
+    <div id="adminScreen" class="admin-hidden">
+      <header class="nav">
+        <div class="nav__inner">
+          <a href="Index.html" class="nav__brand">السلطان</a>
+          <button id="logoutBtn" class="btn btn--ghost" type="button">تسجيل خروج</button>
+        </div>
+      </header>
+
+      <main class="admin">
+        <section class="admin__head">
+          <h1>لوحة التحكم</h1>
+          <p class="admin__lead">عدّل المنتجات ثم اضغط «حفظ التغييرات». تُحفظ البيانات على هذا الجهاز فقط، ويمكن نقلها عبر نسخة احتياطية.</p>
+
+          <div class="actions">
+            <button class="btn btn--ghost" id="addBtn" type="button">+ إضافة منتج</button>
+            <button class="btn btn--primary" id="saveBtn" type="button">حفظ التغييرات</button>
+            <button class="btn btn--ghost" id="exportBtn" type="button">تصدير نسخة احتياطية</button>
+            <button class="btn btn--ghost" id="importBtn" type="button">استيراد نسخة احتياطية</button>
+            <input id="importFile" type="file" accept="application/json,.json" hidden />
+            <span class="status" id="status" aria-live="polite"></span>
+          </div>
+        </section>
+
+        <section id="rows" class="rows" aria-label="المنتجات"></section>
+
+        <h2 class="admin__sub">هكذا يراها الزبائن</h2>
+        <div class="grid" id="preview"></div>
+      </main>
+    </div>
+
+    <script src="Card.js"></script>
+    <script src="Admin.js"></script>
+  </body>
+</html>
